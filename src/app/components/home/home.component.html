@@ -12,3 +12,24 @@
         </mat-select>
     </mat-form-field>
 </div>
+
+<div class="games">
+    <ng-container *ngFor="let game of games; let i=index">
+        <div class="game">
+            <div class="game-thumb-container">
+                <img *ngIf="game.background_image" [src]="game.background_image" alt="thumbnail" [title]="game.name" class="game-thumbnail" loading="lazy">
+                <p *ngIf="!game.background_image">No Image</p>
+            </div>
+            <div class="game-description">
+                <p class="game-name">{{game.name}}</p>
+                <div class="game-platforms">
+                    <img 
+                        *ngFor="let gamePlatform of game.parent_platforms" 
+                        src="assets/images/platforms/{{gamePlatform.platform.slug}}.svg" 
+                        [alt]="gamePlatform.platform.slug" 
+                        class="game-platform platform-icon" loading="lazy">
+                </div>
+            </div>
+        </div>
+    </ng-container>
+</div>
